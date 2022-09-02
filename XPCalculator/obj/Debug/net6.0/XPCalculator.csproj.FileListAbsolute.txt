@@ -1,0 +1,15 @@
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.csproj.AssemblyReference.cache
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.AssemblyInfoInputs.cache
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.AssemblyInfo.cs
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.csproj.CoreCompileInputs.cache
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\bin\Debug\net6.0\XPCalculator.exe
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\bin\Debug\net6.0\XPCalculator.deps.json
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\bin\Debug\net6.0\XPCalculator.runtimeconfig.json
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\bin\Debug\net6.0\XPCalculator.dll
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\bin\Debug\net6.0\XPCalculator.pdb
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.dll
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\refint\XPCalculator.dll
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.pdb
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\XPCalculator.genruntimeconfig.cache
+C:\Users\coffe\Desktop\XPCalculator\XPCalculator\obj\Debug\net6.0\ref\XPCalculator.dll
