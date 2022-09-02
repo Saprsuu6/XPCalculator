@@ -6,6 +6,7 @@
         {
             char[] digits = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
             int[] digitsValue = { 1, 5, 10, 50, 100, 500, 1000 };
+            List<int> usedValues = new List<int>();
             int result = 0;
 
             for (int pos = str.Length - 1; pos >= 0; pos--)
@@ -26,7 +27,9 @@
                 }
                 else
                 {
-                    if (digitsValue[pos + 1] > value)
+                    int a = usedValues.Last();
+
+                    if (a > value)
                     {
                         result -= value;
                     }
@@ -35,6 +38,8 @@
                         result += value;
                     }
                 }
+
+                usedValues.Add(value);
             }
 
             return result;
