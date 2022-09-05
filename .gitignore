@@ -399,4 +399,4 @@ FodyWeavers.xsd
 
 *.exe
 *.dll
-*.vs
+.vs
