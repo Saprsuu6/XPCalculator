@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculatorTest\\XPCalculatorTest.csproj": {}
+    "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculatorTest\\XPCalculatorTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculatorTest\\XPCalculatorTest.csproj": {
+    "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculatorTest\\XPCalculatorTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculatorTest\\XPCalculatorTest.csproj",
+        "projectUniqueName": "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculatorTest\\XPCalculatorTest.csproj",
         "projectName": "XPCalculatorTest",
-        "projectPath": "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculatorTest\\XPCalculatorTest.csproj",
-        "packagesPath": "C:\\Users\\coffe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculatorTest\\obj\\",
+        "projectPath": "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculatorTest\\XPCalculatorTest.csproj",
+        "packagesPath": "C:\\Users\\_dns_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculatorTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\coffe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\_dns_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculator\\XPCalculator.csproj": {
-                "projectPath": "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculator\\XPCalculator.csproj"
+              "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculator\\XPCalculator.csproj": {
+                "projectPath": "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculator\\XPCalculator.csproj"
               }
             }
           }
@@ -86,20 +85,20 @@
         }
       }
     },
-    "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculator\\XPCalculator.csproj": {
+    "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculator\\XPCalculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculator\\XPCalculator.csproj",
+        "projectUniqueName": "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculator\\XPCalculator.csproj",
         "projectName": "XPCalculator",
-        "projectPath": "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculator\\XPCalculator.csproj",
-        "packagesPath": "C:\\Users\\coffe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\coffe\\Desktop\\XPCalculator\\XPCalculator\\obj\\",
+        "projectPath": "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculator\\XPCalculator.csproj",
+        "packagesPath": "C:\\Users\\_dns_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\_dns_\\Source\\Repos\\XPCalculator-191\\XPCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\coffe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\_dns_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -108,7 +107,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
