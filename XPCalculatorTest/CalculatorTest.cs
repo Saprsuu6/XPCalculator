@@ -77,6 +77,13 @@ namespace XPCalculatorTest
             Assert.AreEqual(exp.GetType(), exc.GetType());
             // проверка на соответствие типов исключения
         }
+
+        [TestMethod]
+        public void RomanNumberParseAllowN()
+        {
+            // check if RomanNumber.Parse returns 0 with "N" argument
+            Assert.AreEqual(RomanNumber.Parse("N"), 0);
+        }
     }
 }
 
