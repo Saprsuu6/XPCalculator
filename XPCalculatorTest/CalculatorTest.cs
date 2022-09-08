@@ -129,6 +129,15 @@ namespace XPCalculatorTest
             Assert.AreNotEqual(rn4, rn1);
             Assert.IsFalse(rn1.Equals(rn4));
         }
+
+        [TestMethod]
+        public void RomanNumberNegativeParsing()
+        {
+            Assert.AreEqual(-10, RomanNumber.Parse("-X"));
+            Assert.AreEqual(-1999, RomanNumber.Parse("-MCMXCIX"));
+            Assert.AreEqual(-900, RomanNumber.Parse("-CM"));
+            Assert.AreEqual(-400, RomanNumber.Parse("-CD"));
+        }
     }
 }
 
