@@ -8,12 +8,7 @@
 
         public RomanNumber(int number)
         {
-            if (number < 0)
-            {
-                throw new ArgumentException("Can no't be null");
-            }
-
-            this.Number = number;
+            Number = number;
         }
 
         public static int Parse(string str)
@@ -30,12 +25,16 @@
 
             char[] digits = { 'N', 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
             int[] digitsValue = { 0, 1, 5, 10, 50, 100, 500, 1000 };
+
             List<int> usedValues = new();
             int result = 0;
 
             for (int pos = str.Length - 1; pos >= 0; pos--)
             {
                 char digit = str[pos];
+
+                if (digit == '-') break;
+
                 int ind = Array.IndexOf(digits, digit);
 
                 if (ind == -1)
@@ -59,7 +58,7 @@
                 usedValues.Add(value);
             }
 
-            return result;
+            return !str.Contains('-') ? result : -result;
         }
 
         public override string ToString()
@@ -69,7 +68,7 @@
                 return "N";
             }
 
-            int n = Number;
+            int n = Number < 0 ? Number * -1 : Number;
             string res = "";
             String[] parts = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
             int[] values = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
@@ -86,7 +85,7 @@
                 res += parts[counter];
             }
 
-            return res;
+            return Number < 0 ? res.Insert(0, "-"): res;
         }
     }
 }
