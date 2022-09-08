@@ -84,6 +84,51 @@ namespace XPCalculatorTest
             // check if RomanNumber.Parse returns 0 with "N" argument
             Assert.AreEqual(RomanNumber.Parse("N"), 0);
         }
+
+        [TestMethod]
+        public void RomanNumberIsNotNull()
+        {
+            RomanNumber romanNumber = new();
+            Assert.IsNotNull(romanNumber);
+
+            RomanNumber romanNumber2 = new(10);
+            Assert.IsNotNull(romanNumber);
+        }
+
+        [TestMethod]
+        public void RomanNumberToString()
+        {
+            RomanNumber romanNumber = new(10);
+            Assert.AreEqual("X", romanNumber.ToString());
+        }
+
+        [TestMethod]
+        public void RomanNumberToStringParseCrossTest()
+        {
+            Random rnd = new Random();
+            int number = rnd.Next(0, 2022);
+
+            RomanNumber romanNumber = new(number);
+            Assert.AreEqual(number, RomanNumber.Parse(romanNumber.ToString()));
+        }
+
+        [TestMethod]
+        public void RomanNumberTypeTest()
+        {
+            RomanNumber rn1 = new(10);
+            RomanNumber rn2 = rn1;
+            Assert.AreSame(rn1, rn2);
+
+            RomanNumber rn3 = rn1 with { };
+            Assert.AreNotSame(rn3, rn1);
+            Assert.AreEqual(rn3, rn1);
+            Assert.IsTrue(rn1.Equals(rn3));
+
+            RomanNumber rn4 = rn1 with { Number = 30 };
+            Assert.AreNotSame(rn4, rn1);
+            Assert.AreNotEqual(rn4, rn1);
+            Assert.IsFalse(rn1.Equals(rn4));
+        }
     }
 }
 
