@@ -66,7 +66,7 @@ namespace XPCalculatorTest
             var exc = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse(""); });
             var exp = new ArgumentException("Empty string not allowed");
             Assert.AreEqual(exp.Message, exc.Message);
-            // проверка на отклонение пустой строки
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace XPCalculatorTest
             var exc = Assert.ThrowsException<ArgumentNullException>(() => { RomanNumber.Parse(null!); });
             var exp = new ArgumentNullException();
             Assert.AreEqual(exp.GetType(), exc.GetType());
-            // проверка на соответствие типов исключения
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
 
         [TestMethod]
@@ -137,6 +137,26 @@ namespace XPCalculatorTest
             Assert.AreEqual(-1999, RomanNumber.Parse("-MCMXCIX"));
             Assert.AreEqual(-900, RomanNumber.Parse("-CM"));
             Assert.AreEqual(-400, RomanNumber.Parse("-CD"));
+        }
+
+        [TestMethod]
+        public void RomanNumberNegativeToString()
+        {
+            //test for negative numbers
+            RomanNumber romanNumber = new RomanNumber();
+            Assert.AreEqual("N", romanNumber.ToString());
+
+            romanNumber = new RomanNumber(-10);
+            Assert.AreEqual("-X", romanNumber.ToString());
+
+            romanNumber = new RomanNumber(-20);
+            Assert.AreEqual("-XX", romanNumber.ToString());
+
+            romanNumber = new RomanNumber(-400);
+            Assert.AreEqual("-CD", romanNumber.ToString());
+
+            romanNumber = new RomanNumber(-900);
+            Assert.AreEqual("-CM", romanNumber.ToString());
         }
     }
 }
