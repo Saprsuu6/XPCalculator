@@ -137,6 +137,18 @@ namespace XPCalculatorTest
             Assert.AreEqual(-1999, RomanNumber.Parse("-MCMXCIX"));
             Assert.AreEqual(-900, RomanNumber.Parse("-CM"));
             Assert.AreEqual(-400, RomanNumber.Parse("-CD"));
+
+            var exc = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("MCMXCIX-"); });
+            var exp = new ArgumentException("Minus coul be only one and at start");
+            Assert.AreEqual(exp.Message, exc.Message);
+
+            var exc1 = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("-MC-MXCIX"); });
+            var exp1 = new ArgumentException("Minus coul be only one and at start");
+            Assert.AreEqual(exp1.Message, exc1.Message);
+
+            var exc2 = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("--MC-MXCIX--"); });
+            var exp2 = new ArgumentException("Minus coul be only one and at start");
+            Assert.AreEqual(exp1.Message, exc1.Message);
         }
 
         [TestMethod]
@@ -157,6 +169,43 @@ namespace XPCalculatorTest
 
             romanNumber = new RomanNumber(-900);
             Assert.AreEqual("-CM", romanNumber.ToString());
+        }
+    }
+
+    [TestClass]
+    public class OperationsTest
+    {
+        [TestMethod]
+        public void AddRNTest()
+        {
+            RomanNumber rn1 = new(10);
+            RomanNumber rn2 = new(20);
+            RomanNumber rn3 = new(-5);
+            RomanNumber rn4 = new(-10);
+            RomanNumber rn5 = new(-15);
+
+            Assert.AreEqual(30, rn2.Add(rn1).Number);
+            Assert.AreEqual(40, rn2.Add(rn2).Number);
+            Assert.AreEqual(-15, rn3.Add(rn4).Number);
+            Assert.AreEqual(-15, rn4.Add(rn3).Number);
+            Assert.AreEqual(-15, rn4.Add(rn3).Number);
+            Assert.AreEqual(rn5, rn4.Add(rn3));
+            Assert.AreEqual(rn5.ToString(), rn4.Add(rn3).ToString());
+            Assert.AreEqual("-V", rn5.Add(rn1).ToString());
+
+            var exc = Assert.ThrowsException<ArgumentNullException>(() => { rn5.Add(null!); });
+            var exp = new ArgumentNullException();
+            Assert.AreEqual(exp.Message, exc.Message);
+        }
+
+        [TestMethod]
+        public void AddTest()
+        {
+            RomanNumber rn = new(10);
+            //Assert.AreEqual(20, rn.Add(10).Number);
+            //Assert.AreEqual(30, rn.Add("XX").Number);
+            //Assert.AreEqual("V", rn.Add(-5).ToString());
+            //Assert.AreEqual("-XL", rn.Add("-L").ToString());
         }
     }
 }

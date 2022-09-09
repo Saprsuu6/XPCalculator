@@ -18,6 +18,11 @@
                 throw new ArgumentNullException();
             }
 
+            if (str.Contains('-') && (str.Where(c => c == '-').Count() > 1 || str[0] != '-'))
+            {
+                throw new ArgumentException("Minus coul be only one and at start");
+            }
+
             if (str.Length == 0)
             {
                 throw new ArgumentException("Empty string not allowed");
@@ -85,7 +90,42 @@
                 res += parts[counter];
             }
 
-            return Number < 0 ? res.Insert(0, "-"): res;
+            return Number < 0 ? res.Insert(0, "-") : res;
         }
+
+        public RomanNumber Add(RomanNumber number)
+        {
+            if (number is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            int sum = Number + number.Number;
+            return new RomanNumber(sum);
+        }
+
+        //public RomanNumber Add(int number)
+        //{
+        //    if (number == 0)
+        //    {
+        //        throw new ArgumentNullException();
+        //    }
+
+        //    int sum = Number + number;
+        //    return new RomanNumber(sum);
+        //}
+
+        //public RomanNumber Add(string number)
+        //{
+        //    if (number == null || number.Length == 0)
+        //    {
+        //        throw new ArgumentNullException();
+        //    }
+
+        //    //RomanNumber result = new RomanNumber(number);
+
+        //    int sum = Number + int.Parse(number);
+        //    return new RomanNumber(sum);
+        //}
     }
 }

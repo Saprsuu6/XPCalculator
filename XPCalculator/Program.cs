@@ -13,9 +13,31 @@ Console.WriteLine(romanNumber.ToString());
 Console.WriteLine(RomanNumber.Parse("-CM"));
 Console.WriteLine(RomanNumber.Parse("-CD"));
 Console.WriteLine(RomanNumber.Parse("-CCIC"));
-Console.WriteLine(RomanNumber.Parse("-MCMXC"));
-Console.WriteLine(RomanNumber.Parse("-CC"));
+
+try
+{
+    Console.WriteLine(RomanNumber.Parse("MCMXCIX-"));
+    //Console.WriteLine(RomanNumber.Parse("-M-CMXC-"));
+    //Console.WriteLine(RomanNumber.Parse("MCMXC-"));
+    //Console.WriteLine(RomanNumber.Parse("C-C"));
+    //Console.WriteLine(RomanNumber.Parse("--CC"));
+    //Console.WriteLine(RomanNumber.Parse("CC--"));
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
 Console.WriteLine(RomanNumber.Parse("-MCMXCXI"));
 
 RomanNumber romanNumber2 = new(-1410);
 Console.WriteLine(romanNumber2.ToString());
+
+try
+{
+    romanNumber2.Add(null!);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
