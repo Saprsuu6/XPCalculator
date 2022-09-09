@@ -35,9 +35,11 @@ Console.WriteLine(romanNumber2.ToString());
 
 try
 {
-    romanNumber2.Add(null!);
+    RomanNumber rn = new(10);
+    rn.Add("-C1");
 }
 catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
+

@@ -29,6 +29,15 @@
             }
 
             char[] digits = { 'N', 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
+
+            foreach (char digitInStr in str)
+            {
+                if (str.Length == 1 && !digits.Contains(digitInStr))
+                {
+                    throw new ArgumentException("Only roman numbers");
+                }
+            }
+
             int[] digitsValue = { 0, 1, 5, 10, 50, 100, 500, 1000 };
 
             List<int> usedValues = new();
@@ -104,28 +113,86 @@
             return new RomanNumber(sum);
         }
 
-        //public RomanNumber Add(int number)
-        //{
-        //    if (number == 0)
-        //    {
-        //        throw new ArgumentNullException();
-        //    }
+        public RomanNumber Add(int number)
+        {
+            if (number == 0)
+            {
+                throw new ArgumentNullException();
+            }
 
-        //    int sum = Number + number;
-        //    return new RomanNumber(sum);
-        //}
+            int sum = Number + number;
+            return new RomanNumber(sum);
+        }
 
-        //public RomanNumber Add(string number)
-        //{
-        //    if (number == null || number.Length == 0)
-        //    {
-        //        throw new ArgumentNullException();
-        //    }
+        public RomanNumber Add(string number)
+        {
+            if (number == null || number.Length == 0)
+            {
+                throw new ArgumentNullException();
+            }
 
-        //    //RomanNumber result = new RomanNumber(number);
+            int sum;
 
-        //    int sum = Number + int.Parse(number);
-        //    return new RomanNumber(sum);
-        //}
+            try
+            {
+                sum = Number + Parse(number);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return new RomanNumber(sum);
+        }
+
+        public static RomanNumber Add(int a, int b)
+        {
+            if (a == 0 || b == 0)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return new RomanNumber(a + b);
+        }
+
+        public static RomanNumber Add(RomanNumber a, int b)
+        {
+            if (a == null || a.Number == 0 || b == 0)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return new RomanNumber(a.Number + b);
+        }
+
+        public static RomanNumber Add(string a, string b)
+        {
+            if (a == null || a.Length == 0 || b == null || b.Length == 0)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return new RomanNumber(Parse(a) + Parse(b));
+        }
+
+        public static RomanNumber Add(RomanNumber a, string b)
+        {
+            if (b == null || b.Length == 0 || a == null || a.Number == 0)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return new RomanNumber(Parse(b) + a.Number);
+        }
+
+        public static RomanNumber Add(RomanNumber a, RomanNumber b)
+        {
+            if (a == null || b == null || a.Number == 0 || b.Number == 0)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return new RomanNumber(a.Number + b.Number);
+        }
     }
 }
