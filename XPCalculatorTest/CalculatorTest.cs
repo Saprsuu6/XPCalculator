@@ -224,7 +224,7 @@ namespace XPCalculatorTest
             Assert.AreEqual(5, rn5.Number);
 
             RomanNumber rn8 = RomanNumber.Add(rn5, 3);
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, 3)); 
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, 3)); // проверка исключительных ситуаций
             Assert.AreEqual(8, rn8.Number);
 
             RomanNumber rn10 = RomanNumber.Add("I", "IX");
