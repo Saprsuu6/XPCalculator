@@ -198,23 +198,23 @@ namespace XPCalculatorTest
         public void AddValueTest()
         {
             RomanNumber rn = new(10);
-            Assert.AreEqual(20, rn.Add(10).Number);
-            Assert.AreEqual("V", rn.Add(-5).ToString());
-            Assert.AreEqual(rn, rn.Add("N"));
+            Assert.AreEqual(20, RomanNumber.Add(rn, 10).Number);
+            Assert.AreEqual("V", RomanNumber.Add(rn, -5).ToString());
+            Assert.AreEqual(rn, RomanNumber.Add(rn, "N"));
         }
 
         [TestMethod]
         public void AddStringTest()
         {
             RomanNumber rn = new(10);
-            Assert.AreEqual(30, rn.Add("XX").Number);
-            Assert.AreEqual("-XL", rn.Add("-L").ToString());
-            Assert.AreEqual(rn, rn.Add("N"));
+            Assert.AreEqual(30, RomanNumber.Add(rn, "XX").Number);
+            Assert.AreEqual("-XL", RomanNumber.Add(rn, "-L").ToString());
+            Assert.AreEqual(rn, RomanNumber.Add(rn, "N"));
 
-            Assert.ThrowsException<ArgumentException>(() => rn.Add(""));
-            Assert.ThrowsException<ArgumentException>(() => rn.Add("-"));
-            Assert.ThrowsException<ArgumentException>(() => rn.Add("10"));
-            Assert.ThrowsException<ArgumentNullException>(() => rn.Add((string)null!));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, ""));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, "-"));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, "10"));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(rn, null!));
         }
 
         [TestMethod]
@@ -232,18 +232,12 @@ namespace XPCalculatorTest
             Assert.AreEqual(10, rn10.Number);
 
             RomanNumber rn9 = RomanNumber.Add(rn5, "IV");
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add((RomanNumber)null!, "IV"));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, "IV"));
             Assert.AreEqual(9, rn9.Number);
 
             RomanNumber rn13 = RomanNumber.Add(rn5, rn8);
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add((RomanNumber)null!, (RomanNumber)null!));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, null!));
             Assert.AreEqual(13, rn13.Number);
-        }
-
-        [TestMethod]
-        public void AddObjTest()
-        {
-            Assert.AreEqual(new RomanNumber(30), RomanNumber.Add("XX", 10));
         }
     }
 }

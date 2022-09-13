@@ -121,10 +121,10 @@
             return Number < 0 ? res.Insert(0, "-") : res;
         }
 
-        private RomanNumber Sum(RomanNumber number1, RomanNumber number2)
-        {
-            return new RomanNumber(number1.Number + number2.Number); ;
-        }
+        //private RomanNumber Sum(RomanNumber number1, RomanNumber number2)
+        //{
+        //    return new RomanNumber(number1.Number + number2.Number);
+        //}
 
         public RomanNumber Add(RomanNumber number)
         {
@@ -133,128 +133,113 @@
                 throw new ArgumentNullException(nameof(number));
             }
 
-            return new RomanNumber(Sum(this, number));
+            return new RomanNumber(Number + number.Number); ;
         }
 
-        public RomanNumber Add(int number)
+        //public RomanNumber Add(int number)
+        //{
+        //    return new RomanNumber(Sum(this, new RomanNumber(number)));
+        //}
+
+        //public RomanNumber Add(string number)
+        //{
+        //    if (number == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(number));
+        //    }
+        //    else if (number.Length == 0)
+        //    {
+        //        throw new ArgumentException("Empty string");
+        //    }
+
+        //    try
+        //    {
+        //        return new RomanNumber(Sum(this, new RomanNumber(Parse(number))));
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+        //public static RomanNumber Add(int number1, int number2)
+        //{
+        //    return new RomanNumber().Sum(new RomanNumber(number1), new RomanNumber(number2));
+        //}
+
+        //public static RomanNumber Add(RomanNumber number1, int number2)
+        //{
+        //    if (number1 == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(number1));
+        //    }
+
+        //    return new RomanNumber().Sum(new RomanNumber(number1.Number), new RomanNumber(number2));
+        //}
+
+        //public static RomanNumber Add(string number1, string number2)
+        //{
+        //    if (number1 == null || number2 == null)
+        //    {
+        //        throw new ArgumentNullException(number1 is null ? nameof(number1) : nameof(number2));
+        //    }
+        //    else if (number1.Length == 0 || number2.Length == 0)
+        //    {
+        //        throw new ArgumentException("Empty string");
+        //    }
+
+        //    return new RomanNumber().Sum(new RomanNumber(Parse(number1)), new RomanNumber(Parse(number2)));
+        //}
+
+        //public static RomanNumber Add(RomanNumber number1, string number2)
+        //{
+        //    if (number1 == null || number2 == null)
+        //    {
+        //        throw new ArgumentNullException(number1 is null ? nameof(number1) : nameof(number2));
+        //    }
+        //    else if (number2.Length == 0)
+        //    {
+        //        throw new ArgumentException("Empty string");
+        //    }
+
+        //    return new RomanNumber().Sum(number1, new RomanNumber(Parse(number2)));
+        //}
+
+        //public static RomanNumber Add(RomanNumber number1, RomanNumber number2)
+        //{
+        //    if (number1 == null || number2 == null)
+        //    {
+        //        throw new ArgumentNullException(number1 is null ? nameof(number1) : nameof(number2));
+        //    }
+
+        //    return new RomanNumber().Sum(number1, number2);
+        //}
+
+        public static RomanNumber Add(object obj1, object obj2)
         {
-            return new RomanNumber(Sum(this, new RomanNumber(number)));
-        }
+            var romanNumbers = new RomanNumber[] { null!, null! };
+            var objects = new object[2] { obj1, obj2 };
 
-        public RomanNumber Add(string number)
-        {
-            if (number == null)
+            for (int i = 0; i < 2; i++)
             {
-                throw new ArgumentNullException(nameof(number));
-            }
-            else if (number.Length == 0)
-            {
-                throw new ArgumentException("Empty string");
-            }
+                if (objects[i] is null) throw new ArgumentNullException($"object{i + 1}");
 
-            try
-            {
-                return new RomanNumber(Sum(this, new RomanNumber(Parse(number))));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public static RomanNumber Add(int number1, int number2)
-        {
-            return new RomanNumber().Sum(new RomanNumber(number1), new RomanNumber(number2));
-        }
-
-        public static RomanNumber Add(RomanNumber number1, int number2)
-        {
-            if (number1 == null)
-            {
-                throw new ArgumentNullException(nameof(number1));
+                if (objects[i] is int intVal)
+                {
+                    romanNumbers[i] = new RomanNumber(intVal);
+                }
+                else if (objects[i] is string stringVal)
+                {
+                    romanNumbers[i] = new RomanNumber(Parse(stringVal));
+                }
+                else if (objects[i] is RomanNumber romanNumber)
+                {
+                    romanNumbers[i] = romanNumber;
+                }
+                else throw new ArgumentException($"obj{i + 1}: type unsupported");
             }
 
-            return new RomanNumber().Sum(new RomanNumber(number1.Number), new RomanNumber(number2));
-        }
-
-        public static RomanNumber Add(string number1, string number2)
-        {
-            if (number1 == null || number2 == null)
-            {
-                throw new ArgumentNullException(number1 is null ? nameof(number1) : nameof(number2));
-            }
-            else if (number1.Length == 0 || number2.Length == 0)
-            {
-                throw new ArgumentException("Empty string");
-            }
-
-            return new RomanNumber().Sum(new RomanNumber(Parse(number1)), new RomanNumber(Parse(number2)));
-        }
-
-        public static RomanNumber Add(RomanNumber number1, string number2)
-        {
-            if (number1 == null || number2 == null)
-            {
-                throw new ArgumentNullException(number1 is null ? nameof(number1) : nameof(number2));
-            }
-            else if (number2.Length == 0)
-            {
-                throw new ArgumentException("Empty string");
-            }
-
-            return new RomanNumber().Sum(number1, new RomanNumber(Parse(number2)));
-        }
-
-        public static RomanNumber Add(RomanNumber number1, RomanNumber number2)
-        {
-            if (number1 == null || number2 == null)
-            {
-                throw new ArgumentNullException(number1 is null ? nameof(number1) : nameof(number2));
-            }
-
-            return new RomanNumber().Sum(number1, number2);
-        }
-
-        public static RomanNumber Add(object rn1, object rn2)
-        {
-            /*  Рефакторинг - разделение условий (условия внутри условия)
-            if (rn1 is null || rn2 is null)
-            {
-                throw new ArgumentNullException(
-                    rn1 is null ? nameof(rn1) : nameof(rn2)) ;
-            }*/
-            if (rn1 is null) throw new ArgumentNullException(nameof(rn1));
-            if (rn2 is null) throw new ArgumentNullException(nameof(rn2));
-
-
-
-            /* Рефакторинг - соединение (перераспределение) условий
-             if (rn1 is int && rn2 is int) return new RomanNumber((int)rn1).Add((int)rn2);
-             else if (rn1 is String && rn2 is String) return new RomanNumber(RomanNumber.Parse((String)rn1)).Add((String)rn2);
-             else if (rn1 is int && rn2 is String) return new RomanNumber((int)rn1).Add((String)rn2);
-             else if (rn1 is String && rn2 is int) return new RomanNumber((int)rn2).Add((String)rn1);
-
-              (rn1 is int && rn2 is int) + (rn1 is int && rn2 is String) -->
-             (rn1 is int)(  rn2 is int  + rn2 is String )
-              */
-            if (rn1 is int v1)
-            {
-                /* Рефакторинг - если код присутствует во всех блоках, его нужно вынести
-                if(rn2 is int v2) return new RomanNumber(v1).Add(v2);
-                if(rn2 is String s2) return new RomanNumber(v1).Add(s2);
-                */
-                var rn = new RomanNumber(v1);
-                if (rn2 is int v2) return rn.Add(v2);
-                if (rn2 is String s2) return rn.Add(s2);
-            }
-            else if (rn1 is string v2)
-            {
-                var rn = new RomanNumber(Parse(v2));
-                if (rn2 is int v3) return rn.Add(v3);
-                if (rn2 is string s3) return rn.Add(s3);
-            }
-
-            return new RomanNumber();
+            return romanNumbers[0].Add(romanNumbers[1]);   // заменить на цикл
         }
     }
 }
