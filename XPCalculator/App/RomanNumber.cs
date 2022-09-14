@@ -46,18 +46,18 @@
             }
             else if (number.Length == 0)
             {
-                throw new ArgumentException("Empty string not allowed");
+                throw new ArgumentException(Resources.GetEmptyStringException());
             }
             else if (number.Contains('-') && (number.Where(c => c == '-').Count() > 1 || number[0] != '-'))
             {
-                throw new ArgumentException("Minus coul be only one and at start");
+                throw new ArgumentException(Resources.GetMinusException());
             }
 
             foreach (char digitInStr in number)
             {
                 if (number.Length == 1 && !mapToParse.ContainsKey(digitInStr))
                 {
-                    throw new ArgumentException("Only roman numbers");
+                    throw new ArgumentException(Resources.GetOnlyRomanException());
                 }
             }
 
@@ -74,7 +74,7 @@
 
                 if (ind == -1)
                 {
-                    throw new ArgumentException($"Invalid char {digit}");
+                    throw new ArgumentException(Resources.GetInvalidCharException(digit));
                 }
 
                 int value = mapToParse.Values.ToArray()[ind];
@@ -222,7 +222,7 @@
 
             for (int i = 0; i < 2; i++)
             {
-                if (objects[i] is null) throw new ArgumentNullException($"object{i + 1}");
+                if (objects[i] is null) throw new ArgumentNullException(Resources.GetObjException(i + 1));
 
                 if (objects[i] is int intVal)
                 {
@@ -236,10 +236,10 @@
                 {
                     romanNumbers[i] = romanNumber;
                 }
-                else throw new ArgumentException($"obj{i + 1}: type unsupported");
+                else throw new ArgumentException(Resources.GetUnsupportedTypeException(objects[i].GetType().ToString()));
             }
 
-            return romanNumbers[0].Add(romanNumbers[1]);   // заменить на цикл
+            return romanNumbers[0].Add(romanNumbers[1]);
         }
     }
 }
