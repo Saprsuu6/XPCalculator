@@ -215,7 +215,7 @@
         //    return new RomanNumber().Sum(number1, number2);
         //}
 
-        public static RomanNumber Add(object obj1, object obj2)
+        public static RomanNumber Add(object? obj1, object? obj2)
         {
             var romanNumbers = new RomanNumber[] { null!, null! };
             var objects = new object[2] { obj1, obj2 };

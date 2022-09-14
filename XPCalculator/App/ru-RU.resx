@@ -117,17 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CHOOSE_LANGUAGE" xml:space="preserve">
+    <value>Выберите язык</value>
+  </data>
   <data name="EMPTY_STRING" xml:space="preserve">
     <value>Пустая срока</value>
   </data>
+  <data name="ENTER_NUMBER" xml:space="preserve">
+    <value>Введите число</value>
+  </data>
+  <data name="ENTER_NUMBER2" xml:space="preserve">
+    <value>Введите второе число</value>
+  </data>
+  <data name="ENTER_OPERATION" xml:space="preserve">
+    <value>Введите операцию</value>
+  </data>
   <data name="INVALID_CHAR" xml:space="preserve">
     <value>Неверный символ</value>
+  </data>
+  <data name="LANGUAGE_ENG" xml:space="preserve">
+    <value>Английский</value>
+  </data>
+  <data name="LANGUAGE_RUS" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="LIST_EXCEPTION" xml:space="preserve">
+    <value>Выберите только те языки которые есть в списке</value>
   </data>
   <data name="MINUS_EXCEPTION" xml:space="preserve">
     <value>Минус может быть только один и в начале</value>
   </data>
   <data name="OBJECT_EXCEPTION" xml:space="preserve">
     <value>Объект</value>
+  </data>
+  <data name="OPERATION_EXCAPTION" xml:space="preserve">
+    <value>Выберите из доступгых операций</value>
+  </data>
+  <data name="RESULT" xml:space="preserve">
+    <value>Результат</value>
   </data>
   <data name="ROMAN_NUMBERS" xml:space="preserve">
     <value>Только римские цифры</value>

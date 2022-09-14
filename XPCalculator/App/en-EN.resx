@@ -117,17 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CHOOSE_LANGUAGE" xml:space="preserve">
+    <value>Choose language</value>
+  </data>
   <data name="EMPTY_STRING" xml:space="preserve">
     <value>Empty string</value>
   </data>
+  <data name="ENTER_NUMBER" xml:space="preserve">
+    <value>Enter number</value>
+  </data>
+  <data name="ENTER_NUMBER2" xml:space="preserve">
+    <value>Enter second number</value>
+  </data>
+  <data name="ENTER_OPERATION" xml:space="preserve">
+    <value>Enter operation</value>
+  </data>
   <data name="INVALID_CHAR" xml:space="preserve">
     <value>Invalid char</value>
+  </data>
+  <data name="LANGUAGE_ENG" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LANGUAGE_RUS" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="LIST_EXCEPTION" xml:space="preserve">
+    <value>Choose only languages in list</value>
   </data>
   <data name="MINUS_EXCEPTION" xml:space="preserve">
     <value>Minus coul be only one and at start</value>
   </data>
   <data name="OBJECT_EXCEPTION" xml:space="preserve">
     <value>Object</value>
+  </data>
+  <data name="OPERATION_EXCAPTION" xml:space="preserve">
+    <value>Choose one operation</value>
+  </data>
+  <data name="RESULT" xml:space="preserve">
+    <value>Result</value>
   </data>
   <data name="ROMAN_NUMBERS" xml:space="preserve">
     <value>Only roman numbers</value>

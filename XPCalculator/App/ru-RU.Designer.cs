@@ -61,6 +61,15 @@ namespace XPCalculator.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Выберите язык.
+        /// </summary>
+        internal static string CHOOSE_LANGUAGE {
+            get {
+                return ResourceManager.GetString("CHOOSE_LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пустая срока.
         /// </summary>
         internal static string EMPTY_STRING {
@@ -70,11 +79,65 @@ namespace XPCalculator.App {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Введите число.
+        /// </summary>
+        internal static string ENTER_NUMBER {
+            get {
+                return ResourceManager.GetString("ENTER_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите второе число.
+        /// </summary>
+        internal static string ENTER_NUMBER2 {
+            get {
+                return ResourceManager.GetString("ENTER_NUMBER2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите операцию.
+        /// </summary>
+        internal static string ENTER_OPERATION {
+            get {
+                return ResourceManager.GetString("ENTER_OPERATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Неверный символ.
         /// </summary>
         internal static string INVALID_CHAR {
             get {
                 return ResourceManager.GetString("INVALID_CHAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Английский.
+        /// </summary>
+        internal static string LANGUAGE_ENG {
+            get {
+                return ResourceManager.GetString("LANGUAGE_ENG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Русский.
+        /// </summary>
+        internal static string LANGUAGE_RUS {
+            get {
+                return ResourceManager.GetString("LANGUAGE_RUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выберите только те языки которые есть в списке.
+        /// </summary>
+        internal static string LIST_EXCEPTION {
+            get {
+                return ResourceManager.GetString("LIST_EXCEPTION", resourceCulture);
             }
         }
         
@@ -93,6 +156,24 @@ namespace XPCalculator.App {
         internal static string OBJECT_EXCEPTION {
             get {
                 return ResourceManager.GetString("OBJECT_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выберите из доступгых операций.
+        /// </summary>
+        internal static string OPERATION_EXCAPTION {
+            get {
+                return ResourceManager.GetString("OPERATION_EXCAPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Результат.
+        /// </summary>
+        internal static string RESULT {
+            get {
+                return ResourceManager.GetString("RESULT", resourceCulture);
             }
         }
         
