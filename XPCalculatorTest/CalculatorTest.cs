@@ -5,6 +5,8 @@ namespace XPCalculatorTest
     [TestClass]
     public class CalculatorTest
     {
+        private Resources resources = new Resources();
+
         [TestMethod]
         public void RomanNumberParse1D()
         {
@@ -41,7 +43,7 @@ namespace XPCalculatorTest
         public void RomanNumberParseInvalidDigit2()
         {
             var exc = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("CD@"); });
-            var exp = new ArgumentException(Resources.GetInvalidCharException('@'));
+            var exp = new ArgumentException(resources.GetInvalidCharException('@'));
             Assert.AreEqual(exp.Message, exc.Message);
         }
 
@@ -49,7 +51,7 @@ namespace XPCalculatorTest
         public void RomanNumberParseInvalidDigit3()
         {
             var exc = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("CUO"); });
-            var exp = new ArgumentException(Resources.GetInvalidCharException('O'));
+            var exp = new ArgumentException(resources.GetInvalidCharException('O'));
             Assert.AreEqual(exp.Message, exc.Message);
         }
 
@@ -57,7 +59,7 @@ namespace XPCalculatorTest
         public void RomanNumberParseInvalidDigit4()
         {
             var exc = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("X X"); });
-            var exp = new ArgumentException(Resources.GetInvalidCharException(' '));
+            var exp = new ArgumentException(resources.GetInvalidCharException(' '));
             Assert.IsTrue(exc.Message.Contains(exp.Message));
         }
 
@@ -65,7 +67,7 @@ namespace XPCalculatorTest
         public void RomanNumberParseEmpty()
         {
             var exc = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse(""); });
-            var exp = new ArgumentException(Resources.GetEmptyStringException());
+            var exp = new ArgumentException(resources.GetEmptyStringException());
             Assert.AreEqual(exp.Message, exc.Message);
             // �������� �� ���������� ������ ������
         }
@@ -140,15 +142,15 @@ namespace XPCalculatorTest
             Assert.AreEqual(-400, RomanNumber.Parse("-CD"));
 
             var exc = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("MCMXCIX-"); });
-            var exp = new ArgumentException(Resources.GetMinusException());
+            var exp = new ArgumentException(resources.GetMinusException());
             Assert.AreEqual(exp.Message, exc.Message);
 
             var exc1 = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("-MC-MXCIX"); });
-            var exp1 = new ArgumentException(Resources.GetMinusException());
+            var exp1 = new ArgumentException(resources.GetMinusException());
             Assert.AreEqual(exp1.Message, exc1.Message);
 
             var exc2 = Assert.ThrowsException<ArgumentException>(() => { RomanNumber.Parse("--MC-MXCIX--"); });
-            var exp2 = new ArgumentException(Resources.GetMinusException());
+            var exp2 = new ArgumentException(resources.GetMinusException());
             Assert.AreEqual(exp1.Message, exc1.Message);
         }
 

@@ -2,7 +2,8 @@
 {
     public record RomanNumber
     {
-        public static Dictionary<char, int> mapToParse = new Dictionary<char, int>()
+        private static Resources resources = new Resources();
+        private static Dictionary<char, int> mapToParse = new Dictionary<char, int>()
         {
             { 'N', 0 },
             { 'I', 1 },
@@ -13,7 +14,7 @@
             { 'D', 500 },
             { 'M', 1000 },
         };
-        public static Dictionary<string, int> mapToString = new Dictionary<string, int>()
+        private static Dictionary<string, int> mapToString = new Dictionary<string, int>()
         {
             { "M", 1000 },
             { "CM", 900 },
@@ -46,18 +47,18 @@
             }
             else if (number.Length == 0)
             {
-                throw new ArgumentException(Resources.GetEmptyStringException());
+                throw new ArgumentException(resources.GetEmptyStringException());
             }
             else if (number.Contains('-') && (number.Where(c => c == '-').Count() > 1 || number[0] != '-'))
             {
-                throw new ArgumentException(Resources.GetMinusException());
+                throw new ArgumentException(resources.GetMinusException());
             }
 
             foreach (char digitInStr in number)
             {
                 if (number.Length == 1 && !mapToParse.ContainsKey(digitInStr))
                 {
-                    throw new ArgumentException(Resources.GetOnlyRomanException());
+                    throw new ArgumentException(resources.GetOnlyRomanException());
                 }
             }
 
@@ -74,7 +75,7 @@
 
                 if (ind == -1)
                 {
-                    throw new ArgumentException(Resources.GetInvalidCharException(digit));
+                    throw new ArgumentException(resources.GetInvalidCharException(digit));
                 }
 
                 int value = mapToParse.Values.ToArray()[ind];
@@ -222,7 +223,7 @@
 
             for (int i = 0; i < 2; i++)
             {
-                if (objects[i] is null) throw new ArgumentNullException(Resources.GetObjException(i + 1));
+                if (objects[i] is null) throw new ArgumentNullException(resources.GetObjException(i + 1));
 
                 if (objects[i] is int intVal)
                 {
@@ -236,7 +237,7 @@
                 {
                     romanNumbers[i] = romanNumber;
                 }
-                else throw new ArgumentException(Resources.GetUnsupportedTypeException(objects[i].GetType().ToString()));
+                else throw new ArgumentException(resources.GetUnsupportedTypeException(objects[i].GetType().ToString()));
             }
 
             return romanNumbers[0].Add(romanNumbers[1]);

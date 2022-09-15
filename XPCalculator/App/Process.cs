@@ -2,32 +2,37 @@
 {
     public class Process
     {
+        private static Resources resources = new Resources();
+
         public static void MainProcess()
         {
             while (true)
             {
-                Console.Write((Resources.Culture == "en-EN"
+                Console.Write((resources.Culture == "en-EN"
                     ? en_EN.ENTER_NUMBER
                     : ru_RU.ENTER_NUMBER) + ": ");
 
                 object? number1 = Console.ReadLine();
 
-                Console.Write((Resources.Culture == "en-EN"
+                Console.Write((resources.Culture == "en-EN"
                     ? en_EN.ENTER_NUMBER
                     : ru_RU.ENTER_NUMBER) + ": ");
 
                 object? number2 = Console.ReadLine();
 
-                Console.WriteLine((Resources.Culture == "en-EN"
+                Console.WriteLine((resources.Culture == "en-EN"
                     ? en_EN.ENTER_OPERATION
                     : ru_RU.ENTER_OPERATION) + "(+, -): ");
 
                 try
                 {
                     var romanNumber = MathLogic(number1, number2);
-                    Console.WriteLine(Resources.Culture == "en-EN"
-                        ? en_EN.ENTER_NUMBER
-                        : ru_RU.ENTER_NUMBER + $": {romanNumber}");
+                    Console.WriteLine($"{number1} + {number2} = {romanNumber}");
+                }
+                catch (ArgumentNullException)
+                {
+                    Console.WriteLine("System exception. Program is terminated");
+                    return;
                 }
                 catch (Exception ex)
                 {
@@ -43,7 +48,7 @@
         {
             if (number2 is null)
             {
-                throw new ApplicationException(Resources.Culture == "en-EN"
+                throw new ApplicationException(resources.Culture == "en-EN"
                     ? en_EN.UNSUPPORTED_TYPE
                     : ru_RU.UNSUPPORTED_TYPE);
             }
@@ -72,7 +77,7 @@
             }
             else
             {
-                throw new ApplicationException(Resources.Culture == "en-EN"
+                throw new ApplicationException(resources.Culture == "en-EN"
                     ? en_EN.OPERATION_EXCAPTION
                     : ru_RU.OPERATION_EXCAPTION);
             }
@@ -107,14 +112,13 @@
         private static void SetLanguage()
         {
             ConsoleKeyInfo key;
-
             key = Console.ReadKey();
 
             while (true)
             {
                 if (key.Key == ConsoleKey.D2)
                 {
-                    Resources.Culture = "ru-RU";
+                    resources.Culture = "ru-RU";
                     break;
                 }
                 else if (key.Key == ConsoleKey.D1)

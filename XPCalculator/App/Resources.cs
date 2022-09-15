@@ -2,9 +2,9 @@
 {
     public class Resources
     {
-        public static string Culture { get; set; } = "en-EN";
+        public string Culture { get; set; } = "en-EN";
 
-        private static string DefineCulture(string message_ru, string message_en, string? culture = null)
+        private string DefineCulture(string message_ru, string message_en, string? culture = null)
         {
             if (culture is null)
             {
@@ -19,7 +19,7 @@
             };
         }
 
-        public static string GetEmptyStringException(string? culture = null)
+        public string GetEmptyStringException(string? culture = null)
         {
             try
             {
@@ -30,7 +30,7 @@
                 throw;
             }
         }
-        public static string GetInvalidCharException(char digit, string? culture = null)
+        public string GetInvalidCharException(char digit, string? culture = null)
         {
             try
             {
@@ -41,7 +41,7 @@
                 throw;
             }
         }
-        public static string GetMinusException(string? culture = null)
+        public string GetMinusException(string? culture = null)
         {
             try
             {
@@ -52,7 +52,7 @@
                 throw;
             }
         }
-        public static string GetOnlyRomanException(string? culture = null)
+        public string GetOnlyRomanException(string? culture = null)
         {
             try
             {
@@ -63,7 +63,7 @@
                 throw;
             }
         }
-        public static string GetObjException(int number, string? culture = null)
+        public string GetObjException(int number, string? culture = null)
         {
             try
             {
@@ -74,7 +74,7 @@
                 throw;
             }
         }
-        public static string GetUnsupportedTypeException(string type, string? culture = null)
+        public string GetUnsupportedTypeException(string type, string? culture = null)
         {
             try
             {
