@@ -12,12 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="App\en-EN.Designer.cs">
+    <Compile Update="Resources\en-EN.Designer.cs">
       <DependentUpon>en-EN.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Update="App\ru-RU.Designer.cs">
+    <Compile Update="Resources\ru-RU.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ru-RU.resx</DependentUpon>
@@ -25,11 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="App\en-EN.resx">
+    <EmbeddedResource Update="Resources\en-EN.resx">
       <LastGenOutput>en-EN.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="App\ru-RU.resx">
+    <EmbeddedResource Update="Resources\ru-RU.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ru-RU.Designer.cs</LastGenOutput>
     </EmbeddedResource>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace XPCalculator.App {
+namespace XPCalculator.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace XPCalculator.App {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("XPCalculator.App.en-EN", typeof(en_EN).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("XPCalculator.Resources.en-EN", typeof(en_EN).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

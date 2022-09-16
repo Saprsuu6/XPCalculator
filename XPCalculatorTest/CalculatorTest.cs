@@ -201,46 +201,80 @@ namespace XPCalculatorTest
         public void AddValueTest()
         {
             RomanNumber rn = new(10);
-            Assert.AreEqual(20, RomanNumber.Add(rn, 10).Number);
-            Assert.AreEqual("V", RomanNumber.Add(rn, -5).ToString());
-            Assert.AreEqual(rn, RomanNumber.Add(rn, "N"));
+            Assert.AreEqual(20, RomanNumber.Add(rn, 10, Operation.PLUS).Number);
+            Assert.AreEqual("V", RomanNumber.Add(rn, -5, Operation.PLUS).ToString());
+            Assert.AreEqual(rn, RomanNumber.Add(rn, "N", Operation.PLUS));
         }
 
         [TestMethod]
         public void AddStringTest()
         {
             RomanNumber rn = new(10);
-            Assert.AreEqual(30, RomanNumber.Add(rn, "XX").Number);
-            Assert.AreEqual("-XL", RomanNumber.Add(rn, "-L").ToString());
-            Assert.AreEqual(rn, RomanNumber.Add(rn, "N"));
+            Assert.AreEqual(30, RomanNumber.Add(rn, "XX", Operation.PLUS).Number);
+            Assert.AreEqual("-XL", RomanNumber.Add(rn, "-L", Operation.PLUS).ToString());
+            Assert.AreEqual(rn, RomanNumber.Add(rn, "N", Operation.PLUS));
 
-            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, ""));
-            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, "-"));
-            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, "10"));
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(rn, null!));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, "", Operation.PLUS));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, "-", Operation.PLUS));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Add(rn, "10", Operation.PLUS));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(rn, null!, Operation.PLUS));
         }
 
         [TestMethod]
         public void AddStaticTest()
         {
-            RomanNumber rn5 = RomanNumber.Add(2, 3);
+            RomanNumber rn5 = RomanNumber.Add(2, 3, Operation.PLUS);
             Assert.AreEqual(5, rn5.Number);
 
-            RomanNumber rn8 = RomanNumber.Add(rn5, 3);
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, 3)); // проверка исключительных ситуаций
+            RomanNumber rn8 = RomanNumber.Add(rn5, 3, Operation.PLUS);
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, 3, Operation.PLUS)); // проверка исключительных ситуаций
             Assert.AreEqual(8, rn8.Number);
 
-            RomanNumber rn10 = RomanNumber.Add("I", "IX");
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add("I", null!));
+            RomanNumber rn10 = RomanNumber.Add("I", "IX", Operation.PLUS);
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add("I", null!, Operation.PLUS));
             Assert.AreEqual(10, rn10.Number);
 
-            RomanNumber rn9 = RomanNumber.Add(rn5, "IV");
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, "IV"));
+            RomanNumber rn9 = RomanNumber.Add(rn5, "IV", Operation.PLUS);
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, "IV", Operation.PLUS));
             Assert.AreEqual(9, rn9.Number);
 
-            RomanNumber rn13 = RomanNumber.Add(rn5, rn8);
-            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, null!));
+            RomanNumber rn13 = RomanNumber.Add(rn5, rn8, Operation.PLUS);
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Add(null!, null!, Operation.PLUS));
             Assert.AreEqual(13, rn13.Number);
+
+            Assert.AreEqual("-VIII", RomanNumber.Add("I", "-IX", Operation.PLUS).ToString());
+        }
+
+        [TestMethod]
+        public void MultiplyStaticTest()
+        {
+            Assert.AreEqual("IV", RomanNumber.Multiply("II", "II").ToString());
+            Assert.AreEqual("IV", RomanNumber.Multiply(2, 2).ToString());
+            Assert.AreEqual("-IV", RomanNumber.Multiply("-II", "II").ToString());
+            Assert.AreEqual("-IV", RomanNumber.Multiply(2, -2).ToString());
+            Assert.AreEqual("IV", RomanNumber.Multiply(2, "II").ToString());
+            Assert.AreEqual("C", RomanNumber.Multiply(10, "X").ToString());
+
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Multiply("-II", " I-I"));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Multiply(2, " I-I"));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Multiply(2, null!));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Multiply(null!, null!));
+        }
+
+        [TestMethod]
+        public void DivisionStaticTest()
+        {
+            Assert.AreEqual("I", RomanNumber.Division("II", "II").ToString());
+            Assert.AreEqual("I", RomanNumber.Division(2, 2).ToString());
+            Assert.AreEqual("-I", RomanNumber.Division("-II", "II").ToString());
+            Assert.AreEqual("-I", RomanNumber.Division(2, -2).ToString());
+            Assert.AreEqual("I", RomanNumber.Division(2, "II").ToString());
+            Assert.AreEqual("X", RomanNumber.Division(100, "X").ToString());
+
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Multiply("-II", " I-I"));
+            Assert.ThrowsException<ArgumentException>(() => RomanNumber.Multiply(2, " I-I"));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Multiply(2, null!));
+            Assert.ThrowsException<ArgumentNullException>(() => RomanNumber.Multiply(null!, null!));
         }
     }
 }

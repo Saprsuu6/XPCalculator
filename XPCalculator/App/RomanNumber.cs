@@ -1,5 +1,7 @@
 ﻿namespace XPCalculator.App
 {
+    public enum Operation { MINUS = 0, PLUS = 1, MULTIPLY = 3, DIVISION = 4 }
+
     public record RomanNumber
     {
         private static Resources resources = new Resources();
@@ -37,6 +39,30 @@
         public RomanNumber(int number)
         {
             Number = number;
+        }
+
+        public RomanNumber(string number)
+        {
+            Number = Parse(number);
+        }
+
+        private RomanNumber(object? obj)
+        {
+            if (obj is null) throw new ArgumentNullException(resources.GetObjException());
+
+            if (obj is int intVal)
+            {
+                Number = intVal;
+            }
+            else if (obj is string stringVal)
+            {
+                Number = Parse(stringVal);
+            }
+            else if (obj is RomanNumber romanNumber)
+            {
+                Number = romanNumber.Number;
+            }
+            else throw new ArgumentException(resources.GetUnsupportedTypeException(obj.GetType().ToString()));
         }
 
         public static int Parse(string number)
@@ -129,12 +155,23 @@
 
         public RomanNumber Add(RomanNumber number)
         {
-            if (number == null)
-            {
-                throw new ArgumentNullException(nameof(number));
-            }
+            return number == null 
+                ? throw new ArgumentNullException(nameof(number))
+                : new RomanNumber(Number + number.Number); ;
+        }
 
-            return new RomanNumber(Number + number.Number); ;
+        public RomanNumber Multiply(RomanNumber number)
+        {
+            return number == null
+                ? throw new ArgumentNullException(nameof(number))
+                : new RomanNumber(Number * number.Number); ;
+        }
+
+        public RomanNumber Division(RomanNumber number)
+        {
+            return number == null
+                ? throw new ArgumentNullException(nameof(number))
+                : new RomanNumber(Number / number.Number); ;
         }
 
         //public RomanNumber Add(int number)
@@ -216,31 +253,46 @@
         //    return new RomanNumber().Sum(number1, number2);
         //}
 
-        public static RomanNumber Add(object? obj1, object? obj2)
+        public static RomanNumber Add(object? obj1, object? obj2, Operation digit)
         {
-            var romanNumbers = new RomanNumber[] { null!, null! };
-            var objects = new object[2] { obj1, obj2 };
+            RomanNumber romanNumber = null!;
 
-            for (int i = 0; i < 2; i++)
+            if (Operation.MINUS.Equals(digit))
             {
-                if (objects[i] is null) throw new ArgumentNullException(resources.GetObjException(i + 1));
-
-                if (objects[i] is int intVal)
+                if (obj2 is int number2int)
                 {
-                    romanNumbers[i] = new RomanNumber(intVal);
+                    number2int *= -1;
+                    romanNumber = new RomanNumber(obj1).Add(new RomanNumber(number2int));
                 }
-                else if (objects[i] is string stringVal)
+                else if (obj2 is string number2string)
                 {
-                    romanNumbers[i] = new RomanNumber(Parse(stringVal));
+                    romanNumber = new RomanNumber(obj1).Add(new RomanNumber(number2string));
                 }
-                else if (objects[i] is RomanNumber romanNumber)
-                {
-                    romanNumbers[i] = romanNumber;
-                }
-                else throw new ArgumentException(resources.GetUnsupportedTypeException(objects[i].GetType().ToString()));
+            }
+            else if (Operation.PLUS.Equals(digit))
+            {
+                romanNumber = new RomanNumber(obj1).Add(new RomanNumber(obj2));
+            }
+            else if (Operation.MULTIPLY.Equals(digit))
+            {
+                romanNumber = new RomanNumber(obj1).Multiply(new RomanNumber(obj2));
+            }
+            else if (Operation.DIVISION.Equals(digit))
+            {
+                romanNumber = new RomanNumber(obj1).Division(new RomanNumber(obj2));
             }
 
-            return romanNumbers[0].Add(romanNumbers[1]);
+            return romanNumber;
+        }
+
+        public static RomanNumber Multiply(object? obj1, object? obj2)
+        {
+            return new RomanNumber(obj1).Multiply(new RomanNumber(obj2));
+        }
+
+        public static RomanNumber Division(object? obj1, object? obj2)
+        {
+            return new RomanNumber(obj1).Division(new RomanNumber(obj2));
         }
     }
 }

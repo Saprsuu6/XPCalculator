@@ -1,4 +1,6 @@
-﻿namespace XPCalculator.App
+﻿using XPCalculator.Resources;
+
+namespace XPCalculator.App
 {
     public class Resources
     {
@@ -63,11 +65,11 @@
                 throw;
             }
         }
-        public string GetObjException(int number, string? culture = null)
+        public string GetObjException(string? culture = null)
         {
             try
             {
-                return DefineCulture(ru_RU.OBJECT_EXCEPTION + $" {number}", en_EN.OBJECT_EXCEPTION + $" {number}", culture);
+                return DefineCulture(ru_RU.OBJECT_EXCEPTION, en_EN.OBJECT_EXCEPTION, culture);
             }
             catch (Exception)
             {

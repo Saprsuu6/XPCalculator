@@ -1,4 +1,7 @@
-﻿namespace XPCalculator.App
+﻿using System.Reflection;
+using XPCalculator.Resources;
+
+namespace XPCalculator.App
 {
     public class Process
     {
@@ -22,12 +25,11 @@
 
                 Console.WriteLine((resources.Culture == "en-EN"
                     ? en_EN.ENTER_OPERATION
-                    : ru_RU.ENTER_OPERATION) + "(+, -): ");
+                    : ru_RU.ENTER_OPERATION) + @"(+, -, *, \): ");
 
                 try
                 {
-                    var romanNumber = MathLogic(number1, number2);
-                    Console.WriteLine($"{number1} + {number2} = {romanNumber}");
+                    MathLogic(number1, number2);
                 }
                 catch (ArgumentNullException)
                 {
@@ -44,7 +46,7 @@
             }
         }
 
-        private static RomanNumber MathLogic(object? number1, object? number2)
+        private static void MathLogic(object? number1, object? number2)
         {
             if (number2 is null)
             {
@@ -58,22 +60,23 @@
 
             if (key.Key == ConsoleKey.OemMinus)
             {
-                if (number2 is int number2int)
-                {
-                    number2int *= -1;
-                    return RomanNumber.Add(number1, number2int);
-                }
-                else if (number2 is string number2string)
-                {
-                    int parsedString = RomanNumber.Parse(number2string);
-                    parsedString *= -1;
-
-                    return RomanNumber.Add(number1, parsedString);
-                }
+                Console.WriteLine($"{number1} + {number2} = " +
+                    $"{RomanNumber.Add(number1, number2, Operation.MINUS)}");
             }
             else if (key.Key == ConsoleKey.OemPlus)
             {
-                return RomanNumber.Add(number1, number2);
+                Console.WriteLine($"{number1} + {number2} = " +
+                    $"{RomanNumber.Add(number1, number2, Operation.PLUS)}");
+            }
+            else if (key.Modifiers.HasFlag(ConsoleModifiers.Shift) && key.Key == ConsoleKey.D8)
+            {
+                Console.WriteLine($"{number1} + {number2} = " +
+                    $"{RomanNumber.Add(number1, number2, Operation.MULTIPLY)}");
+            }
+            else if (key.Key == ConsoleKey.Oem5)
+            {
+                Console.WriteLine($"{number1} + {number2} = " +
+                   $"{RomanNumber.Add(number1, number2, Operation.DIVISION)}");
             }
             else
             {
@@ -81,8 +84,6 @@
                     ? en_EN.OPERATION_EXCAPTION
                     : ru_RU.OPERATION_EXCAPTION);
             }
-
-            return null!;
         }
 
         public static void ChooseLanguage()
