@@ -135,11 +135,8 @@
   <data name="INVALID_CHAR" xml:space="preserve">
     <value>Invalid char</value>
   </data>
-  <data name="LANGUAGE_ENG" xml:space="preserve">
+  <data name="LANGUAGE" xml:space="preserve">
     <value>English</value>
-  </data>
-  <data name="LANGUAGE_RUS" xml:space="preserve">
-    <value>Russian</value>
   </data>
   <data name="LIST_EXCEPTION" xml:space="preserve">
     <value>Choose only languages in list</value>

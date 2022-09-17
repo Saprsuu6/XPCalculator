@@ -1,11 +1,42 @@
 ﻿using System.Reflection;
+using System.Text;
 using XPCalculator.Resources;
 
 namespace XPCalculator.App
 {
     public class Process
     {
+        private static Dictionary<string, IEnumerable<PropertyInfo>> keyValuePairs = null!;
         private static Resources resources = new Resources();
+
+        public static void SetInfosAboutResources()
+        {
+            Type[] types = Assembly.GetExecutingAssembly().GetTypes()
+                .Where(t => String.Equals(t.Namespace, "XPCalculator.Resources", StringComparison.Ordinal))
+                .ToArray();
+
+            Dictionary<string, IEnumerable<PropertyInfo>> keyValuePairs
+                = new Dictionary<string, IEnumerable<PropertyInfo>>();
+
+            foreach (Type type in types)
+            {
+                TypeInfo typeInfo = type.GetTypeInfo();
+                IEnumerable<PropertyInfo> propertyInfos
+                    = typeInfo.DeclaredProperties;
+
+                keyValuePairs.Add(typeInfo.Name, propertyInfos);
+            }
+
+            Process.keyValuePairs = keyValuePairs;
+        }
+
+        private static string? GetStrignFromPair(int index, string propertyName)
+        {
+            object? obj = null!;
+            return keyValuePairs.ElementAt(index).Value
+                .First(property => property.Name == propertyName)
+                .GetValue(obj) as string;
+        }
 
         public static void MainProcess()
         {
@@ -88,11 +119,27 @@ namespace XPCalculator.App
 
         public static void ChooseLanguage()
         {
+            StringBuilder msg = new StringBuilder();
+
             while (true)
             {
-                Console.WriteLine(en_EN.CHOOSE_LANGUAGE + $"({ru_RU.CHOOSE_LANGUAGE}):");
-                Console.WriteLine($"1. {en_EN.LANGUAGE_ENG}({ru_RU.LANGUAGE_ENG})" +
-                    $"\n2. {en_EN.LANGUAGE_RUS}({ru_RU.LANGUAGE_RUS})");
+                for (int i = 0; i < keyValuePairs.Count; i++)
+                {
+                    string? str = GetStrignFromPair(i, "CHOOSE_LANGUAGE");
+                    msg.Append(i != keyValuePairs.Count - 1 ? str + ", " : str);
+                }
+
+                Console.WriteLine(msg);
+                msg.Clear();
+
+                for (int i = 0; i < keyValuePairs.Count; i++)
+                {
+                    string? str = GetStrignFromPair(i, "LANGUAGE");
+                    msg.Append($"{i + 1}. " + (i != keyValuePairs.Count - 1 ? str : str) + "\n");
+                }
+
+                Console.WriteLine(msg);
+                msg.Clear();
 
                 try
                 {
@@ -112,6 +159,8 @@ namespace XPCalculator.App
 
         private static void SetLanguage()
         {
+            StringBuilder msg = new StringBuilder();
+
             ConsoleKeyInfo key;
             key = Console.ReadKey();
 
@@ -128,7 +177,13 @@ namespace XPCalculator.App
                 }
                 else
                 {
-                    throw new ApplicationException(en_EN.LIST_EXCEPTION + $"({ru_RU.LIST_EXCEPTION})");
+                    for (int i = 0; i < keyValuePairs.Count; i++)
+                    {
+                        string? str = GetStrignFromPair(i, "LIST_EXCEPTION");
+                        msg.Append(i != keyValuePairs.Count - 1 ? str + ", " : str);
+                    }
+
+                    throw new ApplicationException(msg.ToString());
                 }
             }
         }

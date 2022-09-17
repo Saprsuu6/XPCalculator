@@ -117,18 +117,9 @@ namespace XPCalculator.Resources {
         /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
-        internal static string LANGUAGE_ENG {
+        internal static string LANGUAGE {
             get {
-                return ResourceManager.GetString("LANGUAGE_ENG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Russian.
-        /// </summary>
-        internal static string LANGUAGE_RUS {
-            get {
-                return ResourceManager.GetString("LANGUAGE_RUS", resourceCulture);
+                return ResourceManager.GetString("LANGUAGE", resourceCulture);
             }
         }
         

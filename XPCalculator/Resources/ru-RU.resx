@@ -135,10 +135,7 @@
   <data name="INVALID_CHAR" xml:space="preserve">
     <value>Неверный символ</value>
   </data>
-  <data name="LANGUAGE_ENG" xml:space="preserve">
-    <value>Английский</value>
-  </data>
-  <data name="LANGUAGE_RUS" xml:space="preserve">
+  <data name="LANGUAGE" xml:space="preserve">
     <value>Русский</value>
   </data>
   <data name="LIST_EXCEPTION" xml:space="preserve">
