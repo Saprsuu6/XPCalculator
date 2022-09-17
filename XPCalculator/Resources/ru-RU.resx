@@ -156,6 +156,9 @@
   <data name="ROMAN_NUMBERS" xml:space="preserve">
     <value>Только римские цифры</value>
   </data>
+  <data name="SYSTEM_EXCETION" xml:space="preserve">
+    <value>Системная ошибка. Программа остановлена</value>
+  </data>
   <data name="UNSUPPORTED_TYPE" xml:space="preserve">
     <value>Тип неопределён</value>
   </data>

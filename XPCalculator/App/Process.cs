@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Text;
 using XPCalculator.Resources;
 
@@ -38,25 +39,26 @@ namespace XPCalculator.App
                 .GetValue(obj) as string;
         }
 
+        private static string? GetStrignFromPairByCulture(string propertyName)
+        {
+            KeyValuePair<string, IEnumerable<PropertyInfo>> pair =
+                keyValuePairs.First(pair => pair.Key == resources.Culture.Replace('-', '_'));
+
+            object? obj = null!;
+            return pair.Value.First(property => property.Name == propertyName).GetValue(obj) as string;
+        }
+
         public static void MainProcess()
         {
             while (true)
             {
-                Console.Write((resources.Culture == "en-EN"
-                    ? en_EN.ENTER_NUMBER
-                    : ru_RU.ENTER_NUMBER) + ": ");
-
+                Console.Write(GetStrignFromPairByCulture("ENTER_NUMBER") + ": ");
                 object? number1 = Console.ReadLine();
 
-                Console.Write((resources.Culture == "en-EN"
-                    ? en_EN.ENTER_NUMBER
-                    : ru_RU.ENTER_NUMBER) + ": ");
-
+                Console.Write(GetStrignFromPairByCulture("ENTER_NUMBER") + ": ");
                 object? number2 = Console.ReadLine();
 
-                Console.WriteLine((resources.Culture == "en-EN"
-                    ? en_EN.ENTER_OPERATION
-                    : ru_RU.ENTER_OPERATION) + @"(+, -, *, \): ");
+                Console.Write(GetStrignFromPairByCulture("ENTER_OPERATION") + @"(+, -, *, \): ");
 
                 try
                 {
@@ -64,7 +66,7 @@ namespace XPCalculator.App
                 }
                 catch (ArgumentNullException)
                 {
-                    Console.WriteLine("System exception. Program is terminated");
+                    Console.Write(GetStrignFromPairByCulture("SYSTEM_EXCETION"));
                     return;
                 }
                 catch (Exception ex)
@@ -81,9 +83,7 @@ namespace XPCalculator.App
         {
             if (number2 is null)
             {
-                throw new ApplicationException(resources.Culture == "en-EN"
-                    ? en_EN.UNSUPPORTED_TYPE
-                    : ru_RU.UNSUPPORTED_TYPE);
+                throw new ApplicationException(GetStrignFromPairByCulture("UNSUPPORTED_TYPE"));
             }
 
             ConsoleKeyInfo key;
@@ -111,21 +111,20 @@ namespace XPCalculator.App
             }
             else
             {
-                throw new ApplicationException(resources.Culture == "en-EN"
-                    ? en_EN.OPERATION_EXCAPTION
-                    : ru_RU.OPERATION_EXCAPTION);
+                throw new ApplicationException(GetStrignFromPairByCulture("OPERATION_EXCAPTION"));
             }
         }
 
         public static void ChooseLanguage()
         {
             StringBuilder msg = new StringBuilder();
+            string? str;
 
             while (true)
             {
                 for (int i = 0; i < keyValuePairs.Count; i++)
                 {
-                    string? str = GetStrignFromPair(i, "CHOOSE_LANGUAGE");
+                    str = GetStrignFromPair(i, "CHOOSE_LANGUAGE");
                     msg.Append(i != keyValuePairs.Count - 1 ? str + ", " : str);
                 }
 
@@ -134,7 +133,7 @@ namespace XPCalculator.App
 
                 for (int i = 0; i < keyValuePairs.Count; i++)
                 {
-                    string? str = GetStrignFromPair(i, "LANGUAGE");
+                    str = GetStrignFromPair(i, "LANGUAGE");
                     msg.Append($"{i + 1}. " + (i != keyValuePairs.Count - 1 ? str : str) + "\n");
                 }
 
@@ -160,6 +159,7 @@ namespace XPCalculator.App
         private static void SetLanguage()
         {
             StringBuilder msg = new StringBuilder();
+            string? str;
 
             ConsoleKeyInfo key;
             key = Console.ReadKey();
@@ -179,7 +179,7 @@ namespace XPCalculator.App
                 {
                     for (int i = 0; i < keyValuePairs.Count; i++)
                     {
-                        string? str = GetStrignFromPair(i, "LIST_EXCEPTION");
+                        str = GetStrignFromPair(i, "LIST_EXCEPTION");
                         msg.Append(i != keyValuePairs.Count - 1 ? str + ", " : str);
                     }
 

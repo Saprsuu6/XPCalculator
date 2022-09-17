@@ -156,6 +156,9 @@
   <data name="ROMAN_NUMBERS" xml:space="preserve">
     <value>Only roman numbers</value>
   </data>
+  <data name="SYSTEM_EXCETION" xml:space="preserve">
+    <value>System exception. Program is terminated</value>
+  </data>
   <data name="UNSUPPORTED_TYPE" xml:space="preserve">
     <value>Type unsupported</value>
   </data>
